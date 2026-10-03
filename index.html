@@ -1,0 +1,763 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STRINGS — Interactive Guitar Experience</title>
+  <meta name="description" content="STRINGS — Where timeless craftsmanship meets modern motion. Explore premium guitars, customize colors, play virtual strings, and experience the sound." />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+<body>
+
+  <!-- ===== LOADING ANIMATION ===== -->
+  <div id="loader" class="loader">
+    <div class="loader-inner">
+      <div class="loader-guitar"><i class="bi bi-music-note-beamed"></i></div>
+      <div class="loader-text">STRINGS</div>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar" class="navbar navbar-expand-lg fixed-top navbar-custom">
+    <div class="container">
+      <a class="navbar-brand" href="#home">
+        <i class="bi bi-graph-up-arrow brand-icon"></i>
+        <span class="brand-text">STRINGS</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+        <span class="toggler-line"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#guitars">Guitars</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        </ul>
+        <div class="nav-right d-flex align-items-center gap-2">
+          <!-- Theme Switcher -->
+          <div class="theme-switcher dropdown">
+            <button class="btn btn-theme dropdown-toggle" type="button" id="themeDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Switch theme">
+              <i class="bi bi-palette-fill"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end theme-menu" aria-labelledby="themeDropdown">
+              <li><button class="theme-option" data-theme="midnight"><span class="theme-swatch swatch-midnight"></span> Midnight</button></li>
+              <li><button class="theme-option" data-theme="sunset"><span class="theme-swatch swatch-sunset"></span> Sunset</button></li>
+              <li><button class="theme-option" data-theme="ocean"><span class="theme-swatch swatch-ocean"></span> Ocean</button></li>
+              <li><button class="theme-option" data-theme="forest"><span class="theme-swatch swatch-forest"></span> Forest</button></li>
+              <li><button class="theme-option" data-theme="vintage"><span class="theme-swatch swatch-vintage"></span> Vintage</button></li>
+            </ul>
+          </div>
+          <a href="#guitars" class="btn btn-explore">Explore Guitars</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="home" class="hero-section">
+    <div class="hero-bg-gradient"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="container hero-content">
+      <div class="row align-items-center min-vh-100">
+        <div class="col-lg-6 hero-text-col">
+          <p class="hero-eyebrow reveal" data-anim="fadeRight">Premium Guitar Collection</p>
+          <h1 class="hero-title reveal" data-anim="fadeUp" data-delay="100">FEEL<br>THE<br>SOUND</h1>
+          <p class="hero-subtitle reveal" data-anim="fadeUp" data-delay="300">Where timeless craftsmanship meets modern motion.</p>
+          <div class="hero-buttons reveal" data-anim="fadeUp" data-delay="500">
+            <a href="#guitars" class="btn btn-primary-glow btn-lg">
+              <i class="bi bi-collection-fill me-2"></i>Explore Guitars
+            </a>
+            <a href="#experience" class="btn btn-outline-glow btn-lg">
+              <i class="bi bi-soundwave me-2"></i>Experience the Sound
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 hero-image-col">
+          <div class="hero-guitar-wrapper">
+            <div class="hero-guitar-glow"></div>
+            <img src="https://images.pexels.com/photos/15855032/pexels-photo-15855032.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Premium electric guitar" class="hero-guitar-img" loading="eager" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Floating notes -->
+    <div class="floating-notes" id="floatingNotes"></div>
+    <!-- Scroll indicator -->
+    <a href="#guitars" class="scroll-indicator" aria-label="Scroll down">
+      <span class="scroll-text">Scroll</span>
+      <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+    </a>
+  </section>
+
+  <!-- ===== GUITAR COLLECTION ===== -->
+  <section id="guitars" class="section guitars-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Our Collection</p>
+        <h2 class="section-title">THE GUITAR COLLECTION</h2>
+        <p class="section-desc">Six extraordinary instruments, each with its own voice and character.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="filter-bar reveal" data-anim="scaleIn" data-delay="200">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="acoustic">Acoustic</button>
+        <button class="filter-btn" data-filter="electric">Electric</button>
+        <button class="filter-btn" data-filter="bass">Bass</button>
+        <button class="filter-btn" data-filter="classic">Classic</button>
+      </div>
+
+      <!-- Guitar Cards -->
+      <div class="row g-4 guitar-grid" id="guitarGrid">
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="classic">
+          <div class="guitar-card reveal" data-anim="fadeUp">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/6145550/pexels-photo-6145550.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Aurora Classic guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Classic</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Aurora Classic</h3>
+              <p class="card-type">Classical Nylon</p>
+              <p class="card-desc">Warm, mellow tones with traditional nylon strings for intimate performances.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$899</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Aurora Classic">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="acoustic">
+          <div class="guitar-card reveal" data-anim="fadeUp" data-delay="100">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/13016431/pexels-photo-13016431.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Midnight Acoustic guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Acoustic</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Midnight Acoustic</h3>
+              <p class="card-type">Dreadnought Acoustic</p>
+              <p class="card-desc">Deep, resonant sound with a rich mahogany body built for the stage.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$1,299</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Midnight Acoustic">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="electric">
+          <div class="guitar-card reveal" data-anim="fadeUp" data-delay="200">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/229033/pexels-photo-229033.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Crimson Electric guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Electric</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Crimson Electric</h3>
+              <p class="card-type">Solid Body Electric</p>
+              <p class="card-desc">Bold, cutting tone with premium humbuckers and a stunning crimson finish.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$1,899</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Crimson Electric">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="classic">
+          <div class="guitar-card reveal" data-anim="fadeUp">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/459797/pexels-photo-459797.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Golden Tone guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Classic</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Golden Tone</h3>
+              <p class="card-type">Vintage Acoustic</p>
+              <p class="card-desc">Golden-aged spruce top producing warm, vintage tones with incredible depth.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$1,499</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Golden Tone">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="electric">
+          <div class="guitar-card reveal" data-anim="fadeUp" data-delay="100">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/1539787/pexels-photo-1539787.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ocean Blue guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Electric</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Ocean Blue</h3>
+              <p class="card-type">Electric with Gold Hardware</p>
+              <p class="card-desc">Deep blue finish with gold control knobs for a look as rich as its sound.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$2,199</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Ocean Blue">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 guitar-card-wrapper" data-category="bass">
+          <div class="guitar-card reveal" data-anim="fadeUp" data-delay="200">
+            <div class="card-img-wrap">
+              <img src="https://images.pexels.com/photos/35610/guitar-bass-instrument-black.jpg?auto=compress&cs=tinysrgb&w=600" alt="Vintage Sunburst bass guitar" class="card-img" loading="lazy" />
+              <span class="card-badge">Bass</span>
+            </div>
+            <div class="card-body-custom">
+              <h3 class="card-title-custom">Vintage Sunburst</h3>
+              <p class="card-type">Electric Bass</p>
+              <p class="card-desc">Classic sunburst finish on a precision bass body with thunderous low end.</p>
+              <div class="card-footer-custom">
+                <span class="card-price">$1,649</span>
+                <button class="btn btn-card" data-bs-toggle="modal" data-bs-target="#guitarModal" data-guitar="Vintage Sunburst">View Guitar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MOVING GUITAR EXPERIENCE ===== -->
+  <section id="experience" class="section experience-section">
+    <div class="experience-bg" id="experienceBg"></div>
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Interactive Experience</p>
+        <h2 class="section-title">SEE IT. FEEL IT. PLAY IT.</h2>
+        <p class="section-desc">Scroll to watch the guitar come alive.</p>
+      </div>
+    </div>
+    <div class="experience-stage">
+      <div class="experience-strings" id="expStrings">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="experience-guitar" id="expGuitar">
+        <img src="https://images.pexels.com/photos/15894591/pexels-photo-15894591.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Moving guitar showcase" loading="lazy" />
+      </div>
+    </div>
+    <div class="container text-center mt-4 reveal" data-anim="fadeUp">
+      <p class="experience-hint"><i class="bi bi-arrow-down-circle me-2"></i>Keep scrolling to move the guitar</p>
+    </div>
+  </section>
+
+  <!-- ===== GUITAR COLOR CUSTOMIZER ===== -->
+  <section id="customizer" class="section customizer-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Personalize</p>
+        <h2 class="section-title">MAKE IT YOURS</h2>
+        <p class="section-desc">Choose your color and watch the guitar transform.</p>
+      </div>
+      <div class="row align-items-center justify-content-center">
+        <div class="col-lg-6 text-center">
+          <div class="customizer-guitar-display" id="customGuitarDisplay">
+            <div class="customizer-glow" id="customGlow"></div>
+            <img src="https://images.pexels.com/photos/15855032/pexels-photo-15855032.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Customizable guitar" id="customGuitarImg" loading="lazy" />
+          </div>
+          <p class="customizer-label" id="customLabel">Natural Wood</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="color-options reveal" data-anim="fadeLeft">
+            <p class="color-options-title">Select Finish</p>
+            <button class="color-swatch-btn active" data-color="natural" data-label="Natural Wood" data-img="https://images.pexels.com/photos/459797/pexels-photo-459797.jpeg?auto=compress&cs=tinysrgb&w=700" data-glow="#c8a063">
+              <span class="swatch" style="background:linear-gradient(135deg,#d4a85a,#8b6332)"></span>
+              Natural
+            </button>
+            <button class="color-swatch-btn" data-color="black" data-label="Midnight Black" data-img="https://images.pexels.com/photos/5969432/pexels-photo-5969432.jpeg?auto=compress&cs=tinysrgb&w=700" data-glow="#444">
+              <span class="swatch" style="background:linear-gradient(135deg,#333,#000)"></span>
+              Black
+            </button>
+            <button class="color-swatch-btn" data-color="red" data-label="Crimson Red" data-img="https://images.pexels.com/photos/229033/pexels-photo-229033.jpeg?auto=compress&cs=tinysrgb&w=700" data-glow="#d32f2f">
+              <span class="swatch" style="background:linear-gradient(135deg,#e53935,#b71c1c)"></span>
+              Red
+            </button>
+            <button class="color-swatch-btn" data-color="blue" data-label="Ocean Blue" data-img="https://images.pexels.com/photos/1539787/pexels-photo-1539787.jpeg?auto=compress&cs=tinysrgb&w=700" data-glow="#1976d2">
+              <span class="swatch" style="background:linear-gradient(135deg,#42a5f5,#0d47a1)"></span>
+              Blue
+            </button>
+            <button class="color-swatch-btn" data-color="sunburst" data-label="Vintage Sunburst" data-img="https://images.pexels.com/photos/35610/guitar-bass-instrument-black.jpg?auto=compress&cs=tinysrgb&w=700" data-glow="#e65100">
+              <span class="swatch" style="background:linear-gradient(135deg,#ff9800,#3e2723)"></span>
+              Sunburst
+            </button>
+            <button class="color-swatch-btn" data-color="white" data-label="Pure White" data-img="https://images.pexels.com/photos/15894591/pexels-photo-15894591.jpeg?auto=compress&cs=tinysrgb&w=700" data-glow="#e0e0e0">
+              <span class="swatch" style="background:linear-gradient(135deg,#f5f5f5,#bdbdbd)"></span>
+              White
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PLAY THE STRINGS ===== -->
+  <section id="play-strings" class="section strings-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Interactive</p>
+        <h2 class="section-title">PLAY THE STRINGS</h2>
+        <p class="section-desc">Click the strings to play. Each string has its own note.</p>
+      </div>
+      <div class="strings-stage reveal" data-anim="scaleIn" data-delay="200">
+        <div class="strings-headstock">
+          <div class="headstock-pegs">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="strings-container" id="stringsContainer">
+          <div class="string-row" data-note="E2" data-freq="82.41">
+            <span class="string-label">E</span>
+            <div class="string-line" data-string="0"></div>
+            <span class="string-note-label"></span>
+          </div>
+          <div class="string-row" data-note="A2" data-freq="110.00">
+            <span class="string-label">A</span>
+            <div class="string-line" data-string="1"></div>
+            <span class="string-note-label"></span>
+          </div>
+          <div class="string-row" data-note="D3" data-freq="146.83">
+            <span class="string-label">D</span>
+            <div class="string-line" data-string="2"></div>
+            <span class="string-note-label"></span>
+          </div>
+          <div class="string-row" data-note="G3" data-freq="196.00">
+            <span class="string-label">G</span>
+            <div class="string-line" data-string="3"></div>
+            <span class="string-note-label"></span>
+          </div>
+          <div class="string-row" data-note="B3" data-freq="246.94">
+            <span class="string-label">B</span>
+            <div class="string-line" data-string="4"></div>
+            <span class="string-note-label"></span>
+          </div>
+          <div class="string-row" data-note="E4" data-freq="329.63">
+            <span class="string-label">e</span>
+            <div class="string-line" data-string="5"></div>
+            <span class="string-note-label"></span>
+          </div>
+        </div>
+        <div class="strings-body"></div>
+        <p class="strings-hint"><i class="bi bi-hand-index me-2"></i>Click the strings to play</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GUITAR FEATURES ===== -->
+  <section id="features" class="section features-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Quality & Craft</p>
+        <h2 class="section-title">CRAFTED FOR PERFORMANCE</h2>
+        <p class="section-desc">Every detail engineered for musicians who demand the best.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp">
+            <div class="feature-icon"><i class="bi bi-tree-fill"></i></div>
+            <h3>Premium Wood</h3>
+            <p>Hand-selected tonewoods aged for years to deliver unmatched resonance and warmth.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp" data-delay="100">
+            <div class="feature-icon"><i class="bi bi-hammer"></i></div>
+            <h3>Handcrafted Body</h3>
+            <p>Each body shaped by master luthiers with decades of experience in traditional methods.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp" data-delay="200">
+            <div class="feature-icon"><i class="bi bi-rulers"></i></div>
+            <h3>Precision Neck</h3>
+            <p>CNC-machined and hand-finished necks for perfect playability across every fret.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp">
+            <div class="feature-icon"><i class="bi bi-soundwave"></i></div>
+            <h3>Crystal Clear Tone</h3>
+            <p>Advanced bracing patterns and pickups engineered for pristine, articulate sound.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp" data-delay="100">
+            <div class="feature-icon"><i class="bi bi-gear-fill"></i></div>
+            <h3>Professional Hardware</h3>
+            <p>Premium tuners, bridges, and electronics from the world's most trusted brands.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card reveal" data-anim="fadeUp" data-delay="200">
+            <div class="feature-icon"><i class="bi bi-music-note-list"></i></div>
+            <h3>Stage Ready</h3>
+            <p>Built to perform live, night after night, with roadworthy durability and reliability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ANIMATED STATS ===== -->
+  <section id="stats" class="section stats-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">By the Numbers</p>
+        <h2 class="section-title">BUILT FOR MUSICIANS</h2>
+      </div>
+      <div class="row g-4 text-center">
+        <div class="col-6 col-lg-3">
+          <div class="stat-card reveal" data-anim="scaleIn">
+            <div class="stat-number" data-target="25" data-suffix="+">0</div>
+            <div class="stat-label">Years of Craftsmanship</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card reveal" data-anim="scaleIn" data-delay="100">
+            <div class="stat-number" data-target="48" data-suffix="">0</div>
+            <div class="stat-label">Unique Models</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card reveal" data-anim="scaleIn" data-delay="200">
+            <div class="stat-number" data-target="12" data-suffix="K+">0</div>
+            <div class="stat-label">Musicians</div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="stat-card reveal" data-anim="scaleIn" data-delay="300">
+            <div class="stat-number" data-target="98" data-suffix="%">0</div>
+            <div class="stat-label">Customer Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section id="gallery" class="section gallery-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Visual Journey</p>
+        <h2 class="section-title">GALLERY</h2>
+        <p class="section-desc">From workshop to stage, explore the world of STRINGS.</p>
+      </div>
+      <div class="row g-3 gallery-grid">
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/8160404/pexels-photo-8160404.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Acoustic Strings" data-cat="Acoustic">
+            <img src="https://images.pexels.com/photos/8160404/pexels-photo-8160404.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Acoustic guitar strings close up" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Acoustic</span><span class="gallery-title">Acoustic Strings</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="50">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/7715637/pexels-photo-7715637.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Stage Performance" data-cat="Stage">
+            <img src="https://images.pexels.com/photos/7715637/pexels-photo-7715637.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Electric guitar on stage with moody lighting" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Stage</span><span class="gallery-title">Stage Performance</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="100">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/87120/pexels-photo-87120.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="String Detail" data-cat="Detail">
+            <img src="https://images.pexels.com/photos/87120/pexels-photo-87120.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Close-up of acoustic guitar strings" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Detail</span><span class="gallery-title">String Detail</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="150">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/8197270/pexels-photo-8197270.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Studio Session" data-cat="Studio">
+            <img src="https://images.pexels.com/photos/8197270/pexels-photo-8197270.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Music studio with guitars and amplifiers" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Studio</span><span class="gallery-title">Studio Session</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/210773/pexels-photo-210773.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Sound Hole" data-cat="Detail">
+            <img src="https://images.pexels.com/photos/210773/pexels-photo-210773.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Acoustic guitar sound hole detail" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Detail</span><span class="gallery-title">Sound Hole</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="50">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/9298952/pexels-photo-9298952.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Live in Concert" data-cat="Stage">
+            <img src="https://images.pexels.com/photos/9298952/pexels-photo-9298952.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Musician playing guitar on stage at a live concert" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Stage</span><span class="gallery-title">Live in Concert</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="100">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/8998472/pexels-photo-8998472.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Craftsmanship" data-cat="Workshop">
+            <img src="https://images.pexels.com/photos/8998472/pexels-photo-8998472.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Unfinished wooden guitar body in workshop" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Workshop</span><span class="gallery-title">Craftsmanship</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+        <div class="col-6 col-md-4 col-lg-3 gallery-item reveal" data-anim="fadeUp" data-delay="150">
+          <div class="gallery-wrap" data-bs-toggle="modal" data-bs-target="#galleryModal" data-img="https://images.pexels.com/photos/8285159/pexels-photo-8285159.jpeg?auto=compress&cs=tinysrgb&w=1200" data-title="Bass Guitar" data-cat="Electric">
+            <img src="https://images.pexels.com/photos/8285159/pexels-photo-8285159.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Dark blue electric bass guitar" loading="lazy" />
+            <div class="gallery-overlay"><span class="gallery-cat">Electric</span><span class="gallery-title">Bass Guitar</span><i class="bi bi-zoom-in"></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section id="testimonials" class="section testimonials-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Reviews</p>
+        <h2 class="section-title">WHAT MUSICIANS SAY</h2>
+      </div>
+      <div id="testimonialCarousel" class="carousel slide reveal" data-bs-ride="carousel" data-anim="fadeUp" data-delay="200">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p class="testimonial-quote">"The Aurora Classic changed how I perform. The tone is warm, the neck is buttery smooth, and it only sounds better with age. STRINGS knows their craft."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><i class="bi bi-person-fill"></i></div>
+                <div>
+                  <div class="testimonial-name">Marcus Rivera</div>
+                  <div class="testimonial-profession">Classical Guitarist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p class="testimonial-quote">"I've played dozens of guitars on tour, but the Crimson Electric cuts through the mix like nothing else. It's my go-to for every show now."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><i class="bi bi-person-fill"></i></div>
+                <div>
+                  <div class="testimonial-name">Elena Kowalski</div>
+                  <div class="testimonial-profession">Lead Guitarist, Velvet Storm</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+              <p class="testimonial-quote">"The Vintage Sunburst bass has a low end that you feel in your chest. The build quality is exceptional and it's incredibly versatile in the studio."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><i class="bi bi-person-fill"></i></div>
+                <div>
+                  <div class="testimonial-name">James Okonkwo</div>
+                  <div class="testimonial-profession">Session Bass Player</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial-card">
+              <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i></div>
+              <p class="testimonial-quote">"From the customizer to the doorstep, the whole experience was seamless. The Ocean Blue is a work of art — it sounds as gorgeous as it looks."</p>
+              <div class="testimonial-author">
+                <div class="testimonial-avatar"><i class="bi bi-person-fill"></i></div>
+                <div>
+                  <div class="testimonial-name">Sofia Chen</div>
+                  <div class="testimonial-profession">Indie Recording Artist</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <div class="carousel-indicators custom-indicators">
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section id="about" class="section timeline-section">
+    <div class="container">
+      <div class="section-header text-center reveal" data-anim="fadeUp">
+        <p class="section-eyebrow">Our Heritage</p>
+        <h2 class="section-title">THE GUITAR JOURNEY</h2>
+        <p class="section-desc">Seven decades of innovation, craft, and sound.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal" data-anim="fadeRight">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">1950</span>
+            <h3 class="timeline-title">The Beginning</h3>
+            <p>Founded in a small workshop with a single mission: build the finest guitars in the world.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-anim="fadeLeft">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">1975</span>
+            <h3 class="timeline-title">Classic Era</h3>
+            <p>Introduced the legendary Dreadnought series, setting a new standard for acoustic sound.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-anim="fadeRight">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">1995</span>
+            <h3 class="timeline-title">Modern Craft</h3>
+            <p>Blended traditional luthiery with precision CNC technology for consistent excellence.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-anim="fadeLeft">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2010</span>
+            <h3 class="timeline-title">Digital Innovation</h3>
+            <p>Pioneered hybrid pickups and onboard digital modeling for unlimited tonal possibilities.</p>
+          </div>
+        </div>
+        <div class="timeline-item reveal" data-anim="fadeRight">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-year">2026</span>
+            <h3 class="timeline-title">The Next Generation</h3>
+            <p>Smart guitars with integrated learning, wireless connectivity, and sustainable materials.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWSLETTER / CTA ===== -->
+  <section id="cta" class="section cta-section">
+    <div class="cta-strings-bg">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="container">
+      <div class="cta-content reveal" data-anim="scaleIn">
+        <h2 class="cta-title">READY TO FIND YOUR SOUND?</h2>
+        <p class="cta-text">Explore guitars designed to turn every note into an experience.</p>
+        <div class="cta-buttons">
+          <a href="#guitars" class="btn btn-primary-glow btn-lg"><i class="bi bi-collection-fill me-2"></i>Explore Collection</a>
+          <a href="#play-strings" class="btn btn-outline-glow btn-lg"><i class="bi bi-envelope-fill me-2"></i>Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer-section">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-brand">
+            <h3><i class="bi bi-graph-up-arrow"></i> STRINGS</h3>
+            <p>Crafting premium guitars since 1950. Where timeless craftsmanship meets modern motion — every instrument is a work of art.</p>
+            <div class="footer-social">
+              <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+              <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+              <a href="#" aria-label="Spotify"><i class="bi bi-spotify"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#guitars">Guitars</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#about">About</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <h4 class="footer-heading">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="#guitars">Acoustic</a></li>
+            <li><a href="#guitars">Electric</a></li>
+            <li><a href="#guitars">Bass</a></li>
+            <li><a href="#guitars">Classic</a></li>
+            <li><a href="#customizer">Custom</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <h4 class="footer-heading">Newsletter</h4>
+          <p class="footer-newsletter-text">Subscribe for new releases, stories, and exclusive offers.</p>
+          <form class="footer-newsletter" id="newsletterForm">
+            <input type="email" class="form-control" placeholder="Your email" aria-label="Email" required />
+            <button type="submit" class="btn btn-primary-glow"><i class="bi bi-send-fill"></i></button>
+          </form>
+          <p class="newsletter-feedback" id="newsletterFeedback"></p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 STRINGS. All rights reserved. Crafted with passion for music.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== BACK TO TOP ===== -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <i class="bi bi-arrow-up-short"></i>
+  </button>
+
+  <!-- ===== GUITAR MODAL ===== -->
+  <div class="modal fade" id="guitarModal" tabindex="-1" aria-labelledby="guitarModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content guitar-modal-content">
+        <div class="modal-header guitar-modal-header">
+          <h5 class="modal-title" id="guitarModalLabel">Guitar Details</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body guitar-modal-body" id="guitarModalBody">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== GALLERY MODAL ===== -->
+  <div class="modal fade" id="galleryModal" tabindex="-1" aria-labelledby="galleryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content gallery-modal-content">
+        <div class="modal-header gallery-modal-header">
+          <div>
+            <span class="gallery-modal-cat" id="galleryModalCat"></span>
+            <h5 class="modal-title" id="galleryModalLabel"></h5>
+          </div>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body gallery-modal-body">
+          <img src="" alt="" id="galleryModalImg" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="js/script.js"></script>
+</body>
+</html>
